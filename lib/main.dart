@@ -52,11 +52,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 return AlertDialog(
                   title: const Text('Thanks!'),
                   content: Text(
-                      'You typed "$value", which has length ${value.characters.length}.'),
+                      'You typed "$value", which has length '
+                          '${value.characters.length}.'
+                          '$encode'
+                  ),
                   actions: <Widget>[
                     TextButton(
                       onPressed: () {
-                        //encodeOneKey('value', 2, 2);
+                        encodeKey('value', [3,1,2,4], [1,3,7,6,5,4,2]);
                         Navigator.pop(context);
                       },
                       child: const Text('OK'),
@@ -69,5 +72,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ),
       ),
     );
+  }
+
+  String encode(){
+    return encodeKey('value', [3,1,2,4], [1,3,7,6,5,4,2]);
   }
 }
