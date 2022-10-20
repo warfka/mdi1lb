@@ -60,7 +60,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                 onPressed: () {
                   setState(() {
                     textForEncryption =
-                        encodeKey('12345678901234567890123', [3,1,2,4], [1,3,7,6,5,4,2]);
+                        encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
                     //print(textForEncryption); _textEditingController.text
                   });
                 },
