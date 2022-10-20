@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:matrix2d/matrix2d.dart';
 
-import '../encryption_logic.dart';
+import '../logic/encryption_logic.dart';
 
 class EncryptionPage extends StatefulWidget {
   const EncryptionPage({super.key, required this.title});
@@ -42,7 +42,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                     ),
                   ),
               ),
-              TextField(
+              TextFormField(
                 controller: _textEditingController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -55,12 +55,18 @@ class _EncryptionPageState extends State<EncryptionPage> {
                       icon: Icon(Icons.clear),
                   ),
                 ),
+                validator: (value){
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
               ),
               MaterialButton(
                 onPressed: () {
                   setState(() {
                     textForEncryption =
-                        encodeKey(_textEditingController.text, [3,1,2,4], [1,3,7,6,5,4,2]);
+                        encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
                     //print(textForEncryption); _textEditingController.text Cироткин Егор Александрович
                   });
                 },
