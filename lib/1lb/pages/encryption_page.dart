@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:matrix2d/matrix2d.dart';
 
+import '../logic/caesar_logic.dart';
 import '../logic/encryption_logic.dart';
 
 class EncryptionPage extends StatefulWidget {
@@ -62,20 +63,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                   return null;
                 },
               ),
-              MaterialButton(
-                onPressed: () {
-                  setState(() {
-                    textForEncryption =
-                        encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
-                    //print(textForEncryption); _textEditingController.text Cироткин Егор Александрович
-                  });
-                },
-                color: Colors.lightBlue,
-                child: const Text(
-                  'Зашифровать перестановкой',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+              encryptionBottons(),
             ],
           ),
         ),
@@ -90,5 +78,44 @@ void encode(){
     List list = [[0, 1, 2, 3, 4, 5, 6, 7]];
     list = list.reshape(2,4);
     print(list);
+  }
+
+  @override
+  Widget encryptionBottons(){
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          MaterialButton(
+            onPressed: () {
+              setState(() {
+                textForEncryption =
+                    encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                //print(textForEncryption); _textEditingController.text Cироткин Егор Александрович
+              });
+            },
+            color: Colors.lightBlue,
+            child: const Text(
+              'Зашифровать перестановкой',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {
+              setState(() {
+                textForEncryption =
+                    caesar('Cироткин Егор Александрович');
+                //print(textForEncryption); _textEditingController.text Cироткин Егор Александрович
+              });
+            },
+            color: Colors.lightBlue,
+            child: const Text(
+              'Шифр Цезаря',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      )
+    );
   }
 }
