@@ -86,33 +86,8 @@ void encode(){
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MaterialButton(
-            onPressed: () {
-              setState(() {
-                textForEncryption =
-                    encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
-                //print(textForEncryption); _textEditingController.text Cироткин Егор Александрович
-              });
-            },
-            color: Colors.lightBlue,
-            child: const Text(
-              'Зашифровать перестановкой',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          MaterialButton(
-            onPressed: () {
-              setState(() {
-                textForEncryption =
-                    caesar('Cироткин Егор Александрович');
-                //print(textForEncryption); _textEditingController.text Cироткин Егор Александрович
-              });
-            },
-            color: Colors.lightBlue,
-            child: const Text(
-              'Шифр Цезаря',
-              style: TextStyle(color: Colors.white),
-            ),
+          Container(
+
           ),
         ],
       )
