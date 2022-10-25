@@ -87,7 +87,121 @@ void encode(){
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-
+            child: Row(
+              children: [
+                Container(
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        textForEncryption =
+                            encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                      });
+                    },
+                    color: Colors.lightBlue,
+                    child: const Text(
+                      'Зашифровать перестановкой',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 47,
+                ),
+                Container(
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        textForEncryption =
+                            encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                      });
+                    },
+                    color: Colors.lightBlue,
+                    child: const Text(
+                      'Расшифровать ',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              children: [
+                Container(
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        textForEncryption =
+                            caesar('Cироткин Егор Александрович');
+                      });
+                    },
+                    color: Colors.lightBlue,
+                    child: const Text(
+                      'Алгоритм Цезаря',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 125,
+                ),
+                Container(
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        textForEncryption =
+                            encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                      });
+                    },
+                    color: Colors.lightBlue,
+                    child: const Text(
+                      'Расшифровать ',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              children: [
+                Container(
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        textForEncryption =
+                            caesar('Cироткин Егор Александрович');
+                      });
+                    },
+                    color: Colors.lightBlue,
+                    child: const Text(
+                      'Перестановка по \nГамильтоновым путям',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 90,
+                ),
+                Container(
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        textForEncryption =
+                            encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                      });
+                    },
+                    color: Colors.lightBlue,
+                    child: const Text(
+                      'Расшифровать ',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       )
