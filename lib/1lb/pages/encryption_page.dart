@@ -94,7 +94,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                            encodeKey('sirotkin_egor_aleksandrovic', [3,1,2,4], [1,3,7,6,5,4,2]);
                       });
                     },
                     color: Colors.lightBlue,
@@ -104,7 +104,7 @@ void encode(){
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 47,
                 ),
                 Container(
@@ -133,7 +133,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            caesar('Cироткин Егор Александрович');
+                            caesar('sirotkin_egor_aleksandrovic');
                       });
                     },
                     color: Colors.lightBlue,
