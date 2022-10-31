@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix2d/matrix2d.dart';
 
 import '../logic/caesar_logic.dart';
+import '../logic/encryp_gamel.dart';
 import '../logic/encryption_logic.dart';
 
 class EncryptionPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
               SizedBox(
                 height: 10,
               ),
-              MaterialButton(onPressed: (){encode();}),
+              //MaterialButton(onPressed: (){encode();}),
               Expanded(
                   child: Container(
                     child: Center(
@@ -50,7 +51,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                   labelText: 'Текст для шифрования до 28 символов',
                   suffixIcon: IconButton(
                       onPressed: (){
-                        encode;
+                       // encode;
                         _textEditingController.clear();
                       },
                       icon: Icon(Icons.clear),
@@ -172,7 +173,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            caesar('Cироткин Егор Александрович');
+                            gamel('Cироткин Егор Александрович', [1,3,2,7,6,4,5]);
                       });
                     },
                     color: Colors.lightBlue,

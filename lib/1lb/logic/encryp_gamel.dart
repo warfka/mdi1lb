@@ -1,30 +1,27 @@
-String gamel(var plaintext) {
-  //stdout.write("Enter the Caesar key: ");
-  // if the entered k is null, then set k as 0
-  var k = 3;//int.parse(stdin.readLineSync() ?? "0");
-  //stdout.write("Enter the plaintext: ");
-  // not including the uppercase
-  var plaintext = 'sirotkin_egor_aleksandrovic';//(stdin.readLineSync() ?? "").toLowerCase();
-  var ciphertext = "";
-  for (var char in plaintext.split('')) {
-    // if the char is a letter, then match the alphabet
-    if (char.contains(RegExp(r'[a-z]'))) {
-      for (var i = 0; i < 26; i++) {
-        if (alphabet[i] == char) {
-          // if the matched letter is 26-k below, then find the letter over k interval
-          if (i < 26 - k) {
-            ciphertext += alphabet[i + k];
-          } else {
-            // if above, return the start point
-            ciphertext += alphabet[i + k - 26];
-          }
-        }
-      }
-    } else {
-      // if not, then simply add it
-      ciphertext += char;
+import 'dart:math';
+
+String gamel(String value, List<int> key1) {
+  value = value.replaceAll(' ', '_');
+  for(int i=value.length; i<28; i++){
+    value += '_';
+  }
+//[3,1,2,4], [1,3,7,6,5,4,2]
+  List<List<String>> newValue = [
+    ['1','3','2','7','6','4','5'],
+    ['1','3','2','7','6','4','5'],
+    ['1','3','2','7','6','4','5'],
+    ['1','3','2','7','6','4','5'],
+  ];
+  int stringIndex = 0;
+
+  key1 = [1,3,2,7,6,4,5];
+  for(int row = 0; row < 4; row++) {
+    for(int column = 0; column < 7; column++) {
+      newValue[row][key1[column]-1] = value[stringIndex];
+      stringIndex++;
     }
   }
-  print("The ciphertext is: $ciphertext");
-  return ciphertext;
+
+  return newValue.join();
+  //return arrayForEncode;
 }
