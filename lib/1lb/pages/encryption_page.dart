@@ -40,7 +40,10 @@ class _EncryptionPageState extends State<EncryptionPage> {
               Expanded(
                   child: Container(
                     child: Center(
-                      child: SelectableText(textForEncryption),
+                      child: SelectableText(
+                          textForEncryption,
+                        style: TextStyle(fontSize: 25.0),
+                      ),
                     ),
                   ),
               ),
@@ -95,7 +98,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            encodeKey('sirotkin_egor_aleksandrovic', [3,1,2,4], [1,3,7,6,5,4,2]);
+                            eListToString(encodeKey('sirotkin_egor_aleksandrovic', [3,1,2,4], [1,3,7,6,5,4,2]));
                       });
                     },
                     color: Colors.lightBlue,
@@ -113,7 +116,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                            'decr';//encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
                       });
                     },
                     color: Colors.lightBlue,
@@ -152,7 +155,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                        'decr';//encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
                       });
                     },
                     color: Colors.lightBlue,
@@ -173,7 +176,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            gamel('Cироткин Егор Александрович', [1,3,2,7,6,4,5]);
+                            gListToString(gamel('sirotkin_egor_aleksandrovic', [1,3,2,7,6,4,5]));
                       });
                     },
                     color: Colors.lightBlue,
@@ -191,7 +194,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                            's';//encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
                       });
                     },
                     color: Colors.lightBlue,

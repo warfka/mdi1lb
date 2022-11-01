@@ -1,6 +1,6 @@
 import 'dart:math';
 
-String gamel(String value, List<int> key1) {
+List<List<String>> gamel(String value, List<int> key1) {
   value = value.replaceAll(' ', '_');
   for(int i=value.length; i<28; i++){
     value += '_';
@@ -22,6 +22,15 @@ String gamel(String value, List<int> key1) {
     }
   }
 
-  return newValue.join();
-  //return arrayForEncode;
+    return newValue;
+}
+
+String gListToString(List<List<String>> newValue){
+  List<String> outString = [];
+  for(int row = 0; row < 4; row++) {
+    for(int column = 0; column < 7; column++) {
+      outString.add(newValue[row][column]);
+    }
+  }
+  return outString.join();
 }
