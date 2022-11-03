@@ -116,7 +116,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            'decr';//encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                            'decr1';//encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
                       });
                     },
                     color: Colors.lightBlue,
@@ -155,7 +155,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                        'decr';//encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                        deCaesar(textForEncryption);
                       });
                     },
                     color: Colors.lightBlue,
