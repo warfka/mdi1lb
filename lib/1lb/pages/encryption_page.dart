@@ -116,7 +116,7 @@ void encode(){
                     onPressed: () {
                       setState(() {
                         textForEncryption =
-                            'decr1';//encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                            eListToString(encodeKey(textForEncryption, [3,1,2,4], [1,3,7,6,5,4,2]));
                       });
                     },
                     color: Colors.lightBlue,
