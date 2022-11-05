@@ -50,35 +50,22 @@ String deEncodeKey(String valueL, List<int> key1, List<int> key2) {
     ['1','3','7','6','5','4','2'],
     ['1','3','7','6','5','4','2'],
   ];
-  List<List<String>> newValueL = [
-    ['1','3','7','6','5','4','2'],
-    ['1','3','7','6','5','4','2'],
-    ['1','3','7','6','5','4','2'],
-    ['1','3','7','6','5','4','2'],
-  ];
+  List<List<String>> newValueL = newValue;
   for(int column = 0; column < 7; column++) {
     for(int row = 0; row < 4; row++) {
       newValue[row][key2[column]-1] = valueL[stringIndex];
       stringIndex++;
     }
   }
-
+  List<String> outText = ['1','3','7','6','5','4','2','1','3','7','6','5','4','2','1',
+    '3','7','6','5','4','2','1','3','7','6','5','4','2'];
+  stringIndex = 0;
   for(int row = 0; row < 4; row++) {
     for(int column = 0; column < 7; column++) {
-      newValueL[row][column] = newValue[key1[row]-1][column];
+      outText[stringIndex] = newValue[key1[row]-1][column];
       stringIndex++;
     }
   }
-
-
-  List<String> outString = [];
-
-  for(int row = 0; row < 4; row++) {
-    for(int column = 0; column < 7; column++) {
-      outString.add(newValue[row][column]);
-    }
-  }
-  //return outString.join();
-  return eListToString(newValueL);
+  return outText.join();
   //return newValueL.join();
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:matrix2d/matrix2d.dart';
-
 import '../logic/caesar_logic.dart';
 import '../logic/encryp_gamel.dart';
 import '../logic/encryption_logic.dart';
@@ -14,12 +12,27 @@ class EncryptionPage extends StatefulWidget {
   State<EncryptionPage> createState() => _EncryptionPageState();
 }
 
+
+
 class _EncryptionPageState extends State<EncryptionPage> {
 
   late final TextEditingController _textEditingController =
   TextEditingController();
 
-  String textForEncryption = '';
+  String _textForEncryption = '';
+
+  @override
+  void initState(){
+    super.initState();
+
+    _textEditingController.addListener(_updateText);
+  }
+
+  void _updateText() {
+    setState(() {
+      _textForEncryption = _textEditingController.text;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,31 +46,29 @@ class _EncryptionPageState extends State<EncryptionPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               //MaterialButton(onPressed: (){encode();}),
               Expanded(
-                  child: Container(
-                    child: Center(
-                      child: SelectableText(
-                          textForEncryption,
-                        style: TextStyle(fontSize: 25.0),
-                      ),
+                  child: Center(
+                    child: SelectableText(
+                      _textEditingController.text,
+                      style: const TextStyle(fontSize: 25.0),
                     ),
                   ),
               ),
               TextFormField(
                 controller: _textEditingController,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   labelText: 'Текст для шифрования до 28 символов',
                   suffixIcon: IconButton(
                       onPressed: (){
                        // encode;
                         _textEditingController.clear();
                       },
-                      icon: Icon(Icons.clear),
+                      icon: const Icon(Icons.clear),
                   ),
                 ),
                 validator: (value){
@@ -74,15 +85,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
       ),
     );
   }
-void encode(){
-    String s ='1234567890';
-    List l = s.split('');
-    print(l);
-    //return encodeKey('value', [3,1,2,4], [1,3,7,6,5,4,2]);
-    List list = [[0, 1, 2, 3, 4, 5, 6, 7]];
-    list = list.reshape(2,4);
-    print(list);
-  }
+
 
   @override
   Widget encryptionBottons(){
@@ -97,8 +100,8 @@ void encode(){
                   child: MaterialButton(
                     onPressed: () {
                       setState(() {
-                        textForEncryption =
-                            encodeKey('sirotkin_egor_aleksandrovic', [3,1,2,4], [1,3,7,6,5,4,2]);
+                        _textEditingController.text =
+                            encodeKey('sirotkin_egor_aleksandrovich', [3,1,2,4], [1,3,7,6,5,4,2]);
                       });
                     },
                     color: Colors.lightBlue,
@@ -115,13 +118,13 @@ void encode(){
                   child: MaterialButton(
                     onPressed: () {
                       setState(() {
-                        textForEncryption =
-                            deEncodeKey(textForEncryption, [3,1,2,4], [1,3,7,6,5,4,2]);
+                        _textEditingController.text =
+                            deEncodeKey(_textEditingController.text, [3,1,2,4], [1,3,7,6,5,4,2]);
                       });
                     },
                     color: Colors.lightBlue,
                     child: const Text(
-                      'Расшифровать ',
+                      'Расшифровать',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -136,8 +139,8 @@ void encode(){
                   child: MaterialButton(
                     onPressed: () {
                       setState(() {
-                        textForEncryption =
-                            caesar('sirotkin_egor_aleksandrovic');
+                        _textEditingController.text =
+                            caesar(_textEditingController.text);
                       });
                     },
                     color: Colors.lightBlue,
@@ -154,8 +157,8 @@ void encode(){
                   child: MaterialButton(
                     onPressed: () {
                       setState(() {
-                        textForEncryption =
-                        deCaesar(textForEncryption);
+                        _textEditingController.text =
+                        deCaesar(_textEditingController.text);
                       });
                     },
                     color: Colors.lightBlue,
@@ -175,8 +178,8 @@ void encode(){
                   child: MaterialButton(
                     onPressed: () {
                       setState(() {
-                        textForEncryption =
-                            gListToString(gamel('sirotkin_egor_aleksandrovic', [1,3,2,7,6,4,5]));
+                        _textEditingController.text =
+                            gListToString(gamel(_textEditingController.text, [1,3,2,6,7,5,4]));
                       });
                     },
                     color: Colors.lightBlue,
@@ -193,8 +196,8 @@ void encode(){
                   child: MaterialButton(
                     onPressed: () {
                       setState(() {
-                        textForEncryption =
-                            's';//encodeKey('Cироткин Егор Александрович', [3,1,2,4], [1,3,7,6,5,4,2]);
+                        _textEditingController.text =
+                            deGamel(_textEditingController.text, [1,3,2,6,7,5,4]);
                       });
                     },
                     color: Colors.lightBlue,
@@ -211,4 +214,6 @@ void encode(){
       )
     );
   }
+
+
 }
