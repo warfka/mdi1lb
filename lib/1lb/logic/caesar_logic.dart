@@ -1,4 +1,3 @@
-import 'dart:io';
 
 List<String> alphabet = [
   'a',
@@ -34,7 +33,7 @@ String caesar(var plaintext) {
   var k = 3;//int.parse(stdin.readLineSync() ?? "0");
   //stdout.write("Enter the plaintext: ");
   // not including the uppercase
-  var plaintext = 'sirotkin_egor_aleksandrovic';//(stdin.readLineSync() ?? "").toLowerCase();
+  //var plaintext = 'sirotkin_egor_aleksandrovic';//(stdin.readLineSync() ?? "").toLowerCase();
   var ciphertext = "";
   for (var char in plaintext.split('')) {
     // if the char is a letter, then match the alphabet

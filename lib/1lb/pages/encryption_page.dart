@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../logic/caesar_logic.dart';
 import '../logic/encryp_gamel.dart';
 import '../logic/encryption_logic.dart';
@@ -11,8 +12,6 @@ class EncryptionPage extends StatefulWidget {
   @override
   State<EncryptionPage> createState() => _EncryptionPageState();
 }
-
-
 
 class _EncryptionPageState extends State<EncryptionPage> {
 
@@ -54,12 +53,15 @@ class _EncryptionPageState extends State<EncryptionPage> {
                   child: Center(
                     child: SelectableText(
                       _textEditingController.text,
-                      style: const TextStyle(fontSize: 25.0),
+                      style: const TextStyle(fontSize: 23.0),
                     ),
                   ),
               ),
               TextFormField(
                 controller: _textEditingController,
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(28),
+                ],
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
                   labelText: 'Текст для шифрования до 28 символов',
@@ -101,7 +103,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                     onPressed: () {
                       setState(() {
                         _textEditingController.text =
-                            encodeKey('sirotkin_egor_aleksandrovich', [3,1,2,4], [1,3,7,6,5,4,2]);
+                            encodeKey(_textEditingController.text, [3,1,2,4], [1,3,7,6,5,4,2]);
                       });
                     },
                     color: Colors.lightBlue,
@@ -112,7 +114,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                   ),
                 ),
                 const SizedBox(
-                  width: 47,
+                  width: 1,
                 ),
                 Container(
                   child: MaterialButton(
@@ -151,7 +153,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                   ),
                 ),
                 SizedBox(
-                  width: 125,
+                  width: 76,
                 ),
                 Container(
                   child: MaterialButton(
@@ -190,7 +192,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                   ),
                 ),
                 SizedBox(
-                  width: 90,
+                  width: 41,
                 ),
                 Container(
                   child: MaterialButton(
