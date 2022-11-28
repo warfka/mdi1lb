@@ -24,30 +24,59 @@ Map<int, String> map = {
   23:'w',
   24:'x',
   25:'y',
-  26:'z'
+  26:'z',
+  27:'_'
 };
 
 void main() {
   String input = 'sirotkin';
   String key = 'egorrrrr';
 
-  //print(map.entries);
-  //print(input.length);
-  //map.find('a');
+  String s1 = 'f';
+  String s2 = 'r';
 
-  var key2 = map.keys.firstWhere((k) => map[k] == 'x', orElse: () => -1);
-  print(key2);
-  inVigenere (input, key);
+  print(inVigenere (s1, s2));
+  print(outVigenere (s1, s2));
 }
 
-String inVigenere (String input, String key){
-  String output = '';
+int inVigenere (String input, String key){
+  int indexInput = map.keys.firstWhere((k) => map[k] == input, orElse: () => 999);
+  int indexKey = map.keys.firstWhere((k) => map[k] == key, orElse: () => 999);
+  int newIndex = (indexInput + indexKey) % 27;
 
-  for(int i=0; i<input.length; i++){
-    if(i == map.keys){
-      print(i);
-    }
+  if(newIndex==0){
+    return 27;
   }
-
-  return output;
+  if(newIndex > 27){
+    return newIndex - 27;
+  } else{
+    return newIndex;
+  }
 }
+
+int outVigenere (String input, String key){
+  int indexInput = map.keys.firstWhere((k) => map[k] == input, orElse: () => -1);
+  int indexKey = map.keys.firstWhere((k) => map[k] == key, orElse: () => -1);
+  int newIndex = indexInput - indexKey % 27;
+
+  if(newIndex < 0){
+    return newIndex + 27;
+  } else{
+    return newIndex;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
