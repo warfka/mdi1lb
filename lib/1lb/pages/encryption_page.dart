@@ -104,6 +104,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                       setState(() {
                         _textEditingController.text =
                             encodeKey(_textEditingController.text, [3,1,2,4], [1,3,7,6,5,4,2]);
+                        print(_textEditingController.text);
                       });
                     },
                     color: Colors.lightBlue,
@@ -143,6 +144,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                       setState(() {
                         _textEditingController.text =
                             caesar(_textEditingController.text);
+                        print(_textEditingController.text);
                       });
                     },
                     color: Colors.lightBlue,
@@ -152,7 +154,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 76,
                 ),
                 Container(
@@ -182,6 +184,7 @@ class _EncryptionPageState extends State<EncryptionPage> {
                       setState(() {
                         _textEditingController.text =
                             gListToString(gamel(_textEditingController.text, [1,3,2,6,7,5,4]));
+                        print(_textEditingController.text);
                       });
                     },
                     color: Colors.lightBlue,

@@ -1,4 +1,3 @@
-
 List<String> alphabet = [
   'a',
   'b',
@@ -30,9 +29,7 @@ List<String> alphabet = [
 
 String caesar(var plaintext) {
 
-  var k = 3;//int.parse(stdin.readLineSync() ?? "0");
-  //stdout.write("Enter the plaintext: ");
-  // not including the uppercase
+  var k = 3;
   //var plaintext = 'sirotkin_egor_aleksandrovic';//(stdin.readLineSync() ?? "").toLowerCase();
   var ciphertext = "";
   for (var char in plaintext.split('')) {
@@ -59,9 +56,8 @@ String caesar(var plaintext) {
 }
 String deCaesar(String plaintext) {
 
-  var k = 26;//int.parse(stdin.readLineSync() ?? "0");
-  //stdout.write("Enter the plaintext: ");
-  // not including the uppercase
+  var k = 26;
+
   plaintext = 'sirotkin_egor_aleksandrovich';//(stdin.readLineSync() ?? "").toLowerCase();
   var ciphertext = "";
   for (var char in plaintext.split('')) {

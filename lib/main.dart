@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mdi1lb/1lb/pages/start_selection_page.dart';
 
 import '1lb/pages/encryption_page.dart';
 import '1lb/ui/encryption_field.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const EncryptionPage(title: 'Шифрование'),
+      home: const StartSelectionPage(),
     );
   }
 }
