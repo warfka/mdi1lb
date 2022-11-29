@@ -29,21 +29,35 @@ Map<int, String> map = {
 };
 
 void main() {
-  String input = 'sirotkin';
+  String word = 'sirotkin';
   String key = 'egorrrrr';
 
-  String s1 = 'f';
-  String s2 = 'r';
+  //String s1 = 'f';
+  //String s2 = 'r';
 
-  print(inVigenere (s1, s2));
-  print(outVigenere (s1, s2));
+  //print(inVigenere (s1, s2));
+  //print(outVigenere (s1, s2));
+
+  vigenereEncryption(word, key);
+}
+
+String vigenereEncryption(String word, String key){
+  String encWord = '';
+
+  for(int i = 0; i < word.length; i++){
+    encWord = map.values.firstWhere((k) =>
+    map[k] == inVigenere(word[i], key[i]), orElse: () => 'error');
+  }
+  print(encWord);
+  return encWord;
 }
 
 int inVigenere (String input, String key){
-  int indexInput = map.keys.firstWhere((k) => map[k] == input, orElse: () => 999);
-  int indexKey = map.keys.firstWhere((k) => map[k] == key, orElse: () => 999);
+  int indexInput = map.keys.firstWhere((k) => map[k] == input,
+      orElse: () => 999);
+  int indexKey = map.keys.firstWhere((k) => map[k] == key,
+      orElse: () => 999);
   int newIndex = (indexInput + indexKey) % 27;
-
   if(newIndex==0){
     return 27;
   }
@@ -53,6 +67,8 @@ int inVigenere (String input, String key){
     return newIndex;
   }
 }
+
+
 
 int outVigenere (String input, String key){
   int indexInput = map.keys.firstWhere((k) => map[k] == input, orElse: () => -1);
