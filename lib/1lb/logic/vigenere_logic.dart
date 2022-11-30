@@ -25,31 +25,26 @@ Map<int, String> map = {
   24:'x',
   25:'y',
   26:'z',
-  27:'_'
+  //27:'_'
 };
 
 void main() {
   String word = 'sirotkin';
   String key = 'egorrrrr';
 
-  //String s1 = 'f';
-  //String s2 = 'r';
-
-  //print(inVigenere (s1, s2));
-  //print(outVigenere (s1, s2));
-
-  vigenereEncryption(word, key);
+  String firs = vigenereEncryption(word, key);
+  print(firs);
+  print(vigenereDecryption(firs, key));
 }
 
 String vigenereEncryption(String word, String key){
-  String encWord = '';
+  List<String> encWord = List.filled(8, '0',growable: false);
 
   for(int i = 0; i < word.length; i++){
-    encWord = map.values.firstWhere((k) =>
-    map[k] == inVigenere(word[i], key[i]), orElse: () => 'error');
+    encWord[i] = map[inVigenere(word[i], key[i])]!;
   }
-  print(encWord);
-  return encWord;
+
+  return encWord.join();
 }
 
 int inVigenere (String input, String key){
@@ -57,28 +52,42 @@ int inVigenere (String input, String key){
       orElse: () => 999);
   int indexKey = map.keys.firstWhere((k) => map[k] == key,
       orElse: () => 999);
-  int newIndex = (indexInput + indexKey) % 27;
+  int newIndex = (indexInput + indexKey) % 26-1;
+
   if(newIndex==0){
-    return 27;
+    return 26;
   }
-  if(newIndex > 27){
-    return newIndex - 27;
+  if(newIndex > 26){
+    return newIndex - 26;
   } else{
     return newIndex;
   }
 }
 
+String vigenereDecryption(String word, String key){
+  List<String> encWord = List.filled(8, '0',growable: false);
 
+  for(int i = 0; i < word.length; i++){
+    encWord[i] = map[outVigenere(word[i], key[i])]!;
+  }
+
+  return encWord.join();
+}
 
 int outVigenere (String input, String key){
-  int indexInput = map.keys.firstWhere((k) => map[k] == input, orElse: () => -1);
-  int indexKey = map.keys.firstWhere((k) => map[k] == key, orElse: () => -1);
-  int newIndex = indexInput - indexKey % 27;
+  int indexInput = map.keys.firstWhere((k) => map[k] == input,
+      orElse: () => 999);
+  print(indexInput);
+  int indexKey = map.keys.firstWhere((k) => map[k] == key,
+      orElse: () => 999);
+  //print(indexKey);
+  int newIndex = (indexInput - indexKey + 26) % 26-1;
 
+  //print(newIndex);
   if(newIndex < 0){
-    return newIndex + 27;
+    return newIndex + 26;
   } else{
-    return newIndex;
+    return newIndex+2;
   }
 }
 
