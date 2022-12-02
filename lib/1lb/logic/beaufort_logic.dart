@@ -31,61 +31,61 @@ Map<int, String> map = {
 void main() {
   String word = 'sirotkin';
   String key = 'egorrrrr';
-
-  String firs = vigenereEncryption(word, key);
+  print(map.length);
+  String firs = beaufortEncryption(word, key);
   print(firs);
-  print(vigenereDecryption(firs, key));
+  print(beaufortDecryption(firs, key));
 }
 
-String vigenereEncryption(String word, String key){
+String beaufortEncryption(String word, String key){
   List<String> encWord = List.filled(8, '0',growable: false);
 
   for(int i = 0; i < word.length; i++){
-    encWord[i] = map[inVigenere(word[i], key[i])]!;
+    encWord[i] = map[inBeaufort(word[i], key[i])]!;
   }
 
   return encWord.join();
 }
 
-int inVigenere (String input, String key){
+int inBeaufort (String input, String key){
   int indexInput = map.keys.firstWhere((k) => map[k] == input,
       orElse: () => 999);
   int indexKey = map.keys.firstWhere((k) => map[k] == key,
       orElse: () => 999);
-  int newIndex = (indexInput + indexKey) % map.length-1;
+  int newIndex = (indexInput + indexKey) % 26-1;
 
   if(newIndex==0){
-    return map.length;
+    return 26;
   }
-  if(newIndex > map.length){
-    return newIndex - map.length;
+  if(newIndex > 26){
+    return newIndex - 26;
   } else{
     return newIndex;
   }
 }
 
-String vigenereDecryption(String word, String key){
+String beaufortDecryption(String word, String key){
   List<String> encWord = List.filled(8, '0',growable: false);
 
   for(int i = 0; i < word.length; i++){
-    encWord[i] = map[outVigenere(word[i], key[i])]!;
+    encWord[i] = map[outBeaufort(word[i], key[i])]!;
   }
 
   return encWord.join();
 }
 
-int outVigenere (String input, String key){
+int outBeaufort (String input, String key){
   int indexInput = map.keys.firstWhere((k) => map[k] == input,
       orElse: () => 999);
   print(indexInput);
   int indexKey = map.keys.firstWhere((k) => map[k] == key,
       orElse: () => 999);
   //print(indexKey);
-  int newIndex = (indexInput - indexKey + map.length) % map.length-1;
+  int newIndex = (indexInput - indexKey + 26) % 26-1;
 
   //print(newIndex);
   if(newIndex < 0){
-    return newIndex + map.length;
+    return newIndex + 26;
   } else{
     return newIndex+2;
   }
