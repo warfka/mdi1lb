@@ -52,13 +52,13 @@ int inBeaufort (String input, String key){
       orElse: () => 999);
   int indexKey = map.keys.firstWhere((k) => map[k] == key,
       orElse: () => 999);
-  int newIndex = (indexInput + indexKey) % 26-1;
+  int newIndex = (indexInput - indexKey) % map.length-1;
 
   if(newIndex==0){
-    return 26;
+    return map.length;
   }
-  if(newIndex > 26){
-    return newIndex - 26;
+  if(newIndex > map.length){
+    return newIndex - map.length;
   } else{
     return newIndex;
   }
@@ -81,11 +81,11 @@ int outBeaufort (String input, String key){
   int indexKey = map.keys.firstWhere((k) => map[k] == key,
       orElse: () => 999);
   //print(indexKey);
-  int newIndex = (indexInput - indexKey + 26) % 26-1;
+  int newIndex = (indexInput + indexKey) % map.length-1;
 
   //print(newIndex);
   if(newIndex < 0){
-    return newIndex + 26;
+    return newIndex + map.length;
   } else{
     return newIndex+2;
   }
