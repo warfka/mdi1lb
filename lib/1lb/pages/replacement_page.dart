@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../logic/beaufort_logic.dart';
 import '../logic/caesar_logic.dart';
 import '../logic/encryp_gamel.dart';
 import '../logic/encryption_logic.dart';
+import '../logic/vigenere_logic.dart';
 
 class ReplacementPage extends StatefulWidget {
   const ReplacementPage({super.key, required this.title});
@@ -64,7 +66,7 @@ class _ReplacementPageState extends State<ReplacementPage> {
                 ],
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
-                  labelText: 'Текст для шифрования до 28 символов',
+                  labelText: 'Текст для шифрования до 8 символов, ключ: "egorrrrr"',
                   suffixIcon: IconButton(
                     onPressed: (){
                       // encode;
@@ -106,7 +108,7 @@ class _ReplacementPageState extends State<ReplacementPage> {
                       onPressed: () {
                         setState(() {
                           _textEditingController.text =
-                              encodeKey(_textEditingController.text, [3,1,2,4], [1,3,7,6,5,4,2]);
+                              vigenereEncryption(_textEditingController.text, 'egorrrrr');
                         });
                       },
                       color: Colors.lightBlue,
@@ -121,7 +123,7 @@ class _ReplacementPageState extends State<ReplacementPage> {
                       onPressed: () {
                         setState(() {
                           _textEditingController.text =
-                              caesar(_textEditingController.text);
+                              beaufortEncryption(_textEditingController.text, 'egorrrrr');
                         });
                       },
                       color: Colors.lightBlue,
@@ -144,7 +146,7 @@ class _ReplacementPageState extends State<ReplacementPage> {
                       onPressed: () {
                         setState(() {
                           _textEditingController.text =
-                              deEncodeKey(_textEditingController.text, [3,1,2,4], [1,3,7,6,5,4,2]);
+                              vigenereDecryption(_textEditingController.text, 'egorrrrr');
                         });
                       },
                       color: Colors.lightBlue,
@@ -160,7 +162,7 @@ class _ReplacementPageState extends State<ReplacementPage> {
                       onPressed: () {
                         setState(() {
                           _textEditingController.text =
-                              deCaesar(_textEditingController.text);
+                              beaufortDecryption(_textEditingController.text, 'egorrrrr');
                         });
                       },
                       color: Colors.lightBlue,

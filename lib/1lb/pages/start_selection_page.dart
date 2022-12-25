@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mdi1lb/1lb/pages/replacement_page.dart';
+import '../../main.dart';
 import 'encryption_page.dart';
+import 'lp_page.dart';
 
 class StartSelectionPage extends StatelessWidget {
   const StartSelectionPage({super.key});
@@ -9,7 +11,7 @@ class StartSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('mdi 1-3'),
+        title: const Text('lp 4'),
       ),
       body: SafeArea(
         child: Center(
@@ -17,6 +19,12 @@ class StartSelectionPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              startButton('4lb', context, (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LpPage()),
+                );
+              },),/*
               startButton('1lb', context, (){
                 Navigator.push(
                   context,
@@ -28,7 +36,7 @@ class StartSelectionPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) => const ReplacementPage(title: 'Методы замены',)),
                 );
-              },)
+              },)*/
             ],
           ),
         ),
@@ -40,7 +48,7 @@ class StartSelectionPage extends StatelessWidget {
               builder: (BuildContext context) {
               return AlertDialog(
                 //title: Text('Методы и средства защиты информации'),
-                content: const Text('Методы и средства защиты информации'
+                content: const Text('Языки программирования'
                     '\nВыполнил: Сироткин Егор ПО(б)-91'),
                 actions: <Widget>[
                   MaterialButton(
